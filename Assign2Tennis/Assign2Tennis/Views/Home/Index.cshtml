@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityUser>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Tennis Court</h2>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if ((User.IsInRole("Admin")) || (User.IsInRole("Member")) || (User.IsInRole("Coach")))
+    {
+        @if (User.IsInRole("Member"))
+        {
+            <h4>Welcome, you are a member of this Tennis Club.</h4>
+        }
+        @if (User.IsInRole("Coach"))
+        {
+            <h4>Welcome, you are a coach of this tennis club.</h4>
+
+        }
+        @if (User.IsInRole("Admin"))
+        {
+            <h4>Welcome Admin, you have total control to this website.</h4>
+            @if (Model.Any())
+            {
+                <h3> Members </h3>
+                @foreach (var item in Model)
+
+                {
+
+                    <h2> @Html.DisplayFor(modelItem => item.Email) </h2>
+                    
+                    }
+
+                }
+                            else
+                            {
+                                < h3 > No Members </ h3 >
+                            }
+                                        }
+        }
+        else
+        {
+            <h4> PLease register as a Member or a Coach. Only one is allowed.</h4>
+
+            <a asp-action="GiveMemberRole" class="btn btn-default"> Register as a Member </a>
+
+            <a asp-area="" asp-controller="Coaches" asp-action="Create" class="btn btn-default">Register as a Coach</a>
+
+        }
+
+    }

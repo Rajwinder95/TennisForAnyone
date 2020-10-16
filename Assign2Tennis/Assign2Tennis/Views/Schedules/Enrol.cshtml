@@ -1,0 +1,46 @@
+﻿@model Assign2Tennis.Models.Schedule
+
+@{
+    ViewData["Title"] = "Enrol";
+}
+
+<h2>Enrol</h2>
+
+<h3>Are you sure you want to Enrol this?</h3>
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EventName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EventName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Coach)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Coach)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+    </dl>
+
+    <form asp-action="Enrol">
+        <input type="hidden" asp-for="Id" name="ScheduleId" />
+        <input type="hidden" asp-for="EventName" name="Event" />
+        <input type="submit" value="Enrol" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

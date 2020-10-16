@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Assign2Tennis.Models.Schedule>
+
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+    <h2>My Schedule list</h2>
+
+   
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EventName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Time)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Coach)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Coach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>              
+
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                     
+
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
